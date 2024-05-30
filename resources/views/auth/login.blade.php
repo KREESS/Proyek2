@@ -1,4 +1,7 @@
 <x-guest-layout>
+    <x-slot name="title">
+        {{ __('Log In') }}
+    </x-slot>
     <x-authentication-card>
         <x-slot name="logo">
             <!-- Ganti logo dengan logo kustom Anda -->
@@ -80,5 +83,3 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
-
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\SoalTryout;
 use App\Models\Materi;
+use App\Models\Feedback;
 
 
 class AdminController extends Controller
@@ -54,11 +55,8 @@ class AdminController extends Controller
 
     public function kelolaFeedback()
     {
-        // Lakukan logika yang diperlukan untuk kelola feedback
-        // Misalnya, mengambil data dari model
-
-        // Tampilkan view kelola_feedback.blade.php dengan data yang sudah diambil
-        return view('admin.kelola_feedback');
+        $feedbacks = Feedback::with('user')->get();
+        return view('admin.kelola_feedback', compact('feedbacks'));
     }
 
     public function tambahSoal()
@@ -215,5 +213,13 @@ class AdminController extends Controller
 
         // Redirect ke halaman kelola_materi dengan pesan sukses
         return redirect()->route('admin.kelola_materi')->with('success', 'Materi berhasil diperbarui.');
+    }
+
+    public function deleteFeedback($id)
+    {
+        $feedback = Feedback::findOrFail($id);
+        $feedback->delete();
+
+        return redirect()->back()->with('success', 'Feedback berhasil dihapus');
     }
 }

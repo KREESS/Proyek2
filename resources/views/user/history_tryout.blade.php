@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNBT - Pembelajaran dan Tryout Terbaik</title>
+    <title>History Tryout - Pembelajaran dan Tryout Terbaik</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Link Font Awesome -->
@@ -18,7 +18,7 @@
 
 <br><br><br><br>
     <div class="container">
-        <h1>Welcome to User Panel Dashboard</h1>
+        <h1>Welcome to User Panel History_tryout</h1>
     </div>
 
 @include('layouts.footer')

@@ -15,16 +15,16 @@
                         <a class="nav-link" href="#">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Belajar</a>
+                        <a class="nav-link" href="{{ route('user.belajar') }}">Belajar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tryout</a>
+                        <a class="nav-link" href="{{ route('user.tryout') }}">Tryout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">History Tryout</a>
+                        <a class="nav-link" href="{{ route('user.history_tryout') }}">History Tryout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">FeedBack</a>
+                        <a class="nav-link" href="{{ route('user.feedback') }}">FeedBack</a>
                     </li>
                 </ul>
                 <div class="dropdown">

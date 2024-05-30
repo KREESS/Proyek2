@@ -263,7 +263,6 @@
             }
         } else if (questionType === 'Tes Literasi') {
             tlOptions.classList.remove('d-none');
-
             const tlType = document.getElementById('tl_type').value;
             if (tlType === 'Literasi dalam Bahasa Indonesia') {
                 tlSuboptionsIndonesia.classList.remove('d-none');
@@ -275,16 +274,16 @@
         }
     }
 
-    // Attach event listener to update options when the question type changes
+    // question type changes
     document.getElementById('question_type').addEventListener('change', showAdditionalOptions);
-    // Attach event listener to update options when the TPS type changes
+    // TPS type changes
     document.getElementById('tps_type').addEventListener('change', showAdditionalOptions);
-    // Attach event listener to update options when the Penalaran type changes
+    // Penalaran type changes
     document.getElementById('penalaran_type').addEventListener('change', showAdditionalOptions);
-    // Attach event listener to update options when the TL type changes
+    // TL type changes
     document.getElementById('tl_type').addEventListener('change', showAdditionalOptions);
 
-    // Call the function initially to set the correct state based on the initial values
+    // Panggil fungsi tersebut pada awalnya untuk menyetel status yang benar berdasarkan nilai awal
     document.addEventListener("DOMContentLoaded", showAdditionalOptions);
 
 
