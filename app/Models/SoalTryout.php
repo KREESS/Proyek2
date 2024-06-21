@@ -43,5 +43,6 @@ class SoalTryout extends Model
         'option_e',
         'correct_answer',
         'answer_explanation',
+        'materi_id',
     ];
 }

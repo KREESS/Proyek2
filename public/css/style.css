@@ -1,4 +1,12 @@
 
+
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color:  #ffffff;
+}
+
 footer {
     background-color: #343a40;
     color: #fff;
@@ -237,4 +245,125 @@ html {
     .ml-2 {
         margin-left: 0.25rem;
     }
+}
+
+
+
+.table th, .table td {
+    white-space: nowrap;
+    word-wrap: break-word; /* Prevents text from wrapping */
+}
+
+.table th:nth-child(1), 
+.table td:nth-child(1) {
+    width: 50px; /* Adjusts the width of the "No" column */
+}
+
+.table th:nth-child(2), 
+.table td:nth-child(2),
+.table th:nth-child(3), 
+.table td:nth-child(3),
+.table th:nth-child(4), 
+.table td:nth-child(4),
+.table th:nth-child(5), 
+.table td:nth-child(5),
+.table th:nth-child(6), 
+.table td:nth-child(6),
+.table th:nth-child(7), 
+.table td:nth-child(7) {
+    width: 150px; /* Adjusts the width of the various description columns */
+}
+
+.table th:nth-child(8), 
+.table td:nth-child(8) {
+    width: 300px; /* Adjusts the width of the "Question" column */
+    text-align: left; /* Aligns text to the left */
+}
+
+.table th:nth-child(9), 
+.table td:nth-child(9),
+.table th:nth-child(10), 
+.table td:nth-child(10),
+.table th:nth-child(11), 
+.table td:nth-child(11),
+.table th:nth-child(12), 
+.table td:nth-child(12),
+.table th:nth-child(13), 
+.table td:nth-child(13) {
+    width: 100px; /* Adjusts the width of the "Option" columns */
+}
+
+.table th:nth-child(14), 
+.table td:nth-child(14) {
+    width: 100px; /* Adjusts the width of the "Correct Answer" column */
+}
+
+.table th:nth-child(15), 
+.table td:nth-child(15) {
+    width: 200px; /* Adjusts the width of the "Penjelasan Jawaban" column */
+}
+
+.table th:nth-child(16), 
+.table td:nth-child(16),
+.table th:nth-child(17), 
+.table td:nth-child(17) {
+    width: 150px; /* Adjusts the width of the "Created At" and "Updated At" columns */
+}
+
+.table th:nth-child(18), 
+.table td:nth-child(18) {
+    width: 150px; /* Adjusts the width of the "Actions" column */
+}
+
+
+.materi-content {
+    white-space: pre-line;
+    line-height: 1.6;
+    font-size: 1rem;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+.materi-content p {
+    margin-bottom: 1rem;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+.materi-card-btn {
+    align-self: center;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+.materi-card-btn:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+.card-title {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#timer {
+    position: absolute;
+    top: 20px; /* Sesuaikan dengan jarak dari atas yang diinginkan */
+    right: 20px; /* Sesuaikan dengan jarak dari kanan yang diinginkan */
+    border: 1px solid #ccc; /* Menambahkan border dengan warna abu-abu */
+    padding: 10px; /* Padding agar teks tidak terlalu dekat dengan border */
+    background-color: #f0f0f0; /* Warna latar belakang untuk kontras */
+    border-radius: 5px; /* Mengatur sudut border */
+}
+
+.h1-custom {
+    font-size: 36px; /* Ukuran font judul */
+    font-weight: bold; /* Ketebalan font */
+    color: #333; /* Warna font */
+    text-transform: uppercase; /* Mengubah teks menjadi huruf besar */
+    text-align: center;
 }

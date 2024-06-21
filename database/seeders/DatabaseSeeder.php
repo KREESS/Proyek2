@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +12,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Periksa apakah pengguna dengan email 'test@example.com' sudah ada
+        $existingUser = User::where('email', 'test@example.com')->first();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        if (!$existingUser) {
+            User::factory()->create([
+                'name' => 'Test User',
+                'email' => 'test@example.com',
+            ]);
+        } else {
+            // Pengguna sudah ada, cetak pesan atau lakukan tindakan lain sesuai kebutuhan
+            echo "Pengguna dengan email 'test@example.com' sudah ada.\n";
+        }
+
+        // Panggil seeder untuk update SoalTryout
+        $this->call(UpdateSoalTryoutMateriIdSeeder::class);
     }
 }

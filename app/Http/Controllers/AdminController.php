@@ -134,6 +134,7 @@ class AdminController extends Controller
             'option_e' => 'required',
             'correct_answer' => 'required',
             'answer_explanation' => 'required',
+            'materi_id' => 'nullable',
         ]);
 
         // Simpan data ke database

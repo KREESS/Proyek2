@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\LatihanController;
 
 // halaman home awal semua user
 Route::get('/', function () {
@@ -21,13 +22,16 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     })->name('dashboard');
 
 
-    // Route untuk user panel
     Route::prefix('user')->group(function () {
         Route::get('/belajar', [UserController::class, 'belajar'])->name('user.belajar');
         Route::get('/tryout', [UserController::class, 'tryout'])->name('user.tryout');
         Route::get('/history_tryout', [UserController::class, 'historyTryout'])->name('user.history_tryout');
         Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
         Route::post('/feedback', [FeedbackController::class, 'store'])->name('user.feedback.store');
+        Route::get('/soal-latihan', [LatihanController::class, 'index'])->name('user.soal_latihan.index');
+        Route::get('/latihan/{materi_id}', [LatihanController::class, 'show'])->name('user.soal_latihan');
+        Route::post('/finish/{materi_id}', [LatihanController::class, 'finish'])->name('user.finish');
+        Route::get('/materi/{id}', [UserController::class, 'show'])->name('user.materi_show');       
         // Tambahkan rute lainnya untuk user panel di sini
     });
 
@@ -53,3 +57,4 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 });
 Route::post('/soal-tryout', [AdminController::class, 'store']);
 Route::post('/materi', [AdminController::class, 'materi']);
+Route::get('/materi/{id}', [UserController::class, 'show'])->name('user.materi.show');
