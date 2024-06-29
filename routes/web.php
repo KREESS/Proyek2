@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LatihanController;
+use App\Http\Controllers\TryoutController;
 
 // halaman home awal semua user
 Route::get('/', function () {
@@ -25,13 +26,24 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::prefix('user')->group(function () {
         Route::get('/belajar', [UserController::class, 'belajar'])->name('user.belajar');
         Route::get('/tryout', [UserController::class, 'tryout'])->name('user.tryout');
+        Route::post('/tryout/finish', [TryoutController::class, 'finish'])->name('tryout.finish');
+        Route::get('/tryout/start', [TryoutController::class, 'start'])->name('tryout.start');
+        Route::get('/tryout/start2', [TryoutController::class, 'start2'])->name('tryout.start2');
+        Route::get('/tryout/start3', [TryoutController::class, 'start3'])->name('tryout.start3');
+        Route::get('/tryout/start4', [TryoutController::class, 'start4'])->name('tryout.start4');
+        Route::get('/tryout/start5', [TryoutController::class, 'start5'])->name('tryout.start5');
+        Route::get('/tryout/start6', [TryoutController::class, 'start6'])->name('tryout.start6');
+        Route::get('/tryout/start7', [TryoutController::class, 'start7'])->name('tryout.start7');
+        Route::get('/tryout/start8', [TryoutController::class, 'start8'])->name('tryout.start8');
+        Route::get('/tryout/end', [TryoutController::class, 'end'])->name('tryout.end');
         Route::get('/history_tryout', [UserController::class, 'historyTryout'])->name('user.history_tryout');
+        Route::get('/history_soal_detail/{id}/{jawaban}', [UserController::class, 'historySoalDetail'])->name('user.history_soal_detail');
+        Route::get('/history_soal_latihan', [UserController::class, 'historySoalLatihan'])->name('user.history_soal_latihan');
         Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
         Route::post('/feedback', [FeedbackController::class, 'store'])->name('user.feedback.store');
-        Route::get('/soal-latihan', [LatihanController::class, 'index'])->name('user.soal_latihan.index');
-        Route::get('/latihan/{materi_id}', [LatihanController::class, 'show'])->name('user.soal_latihan');
+        Route::get('/latihan/{id}', [LatihanController::class, 'show'])->name('user.soal_latihan');
         Route::post('/finish/{materi_id}', [LatihanController::class, 'finish'])->name('user.finish');
-        Route::get('/materi/{id}', [UserController::class, 'show'])->name('user.materi_show');       
+        Route::get('/materi/{id}', [UserController::class, 'show'])->name('user.materi_show');
         // Tambahkan rute lainnya untuk user panel di sini
     });
 
@@ -39,6 +51,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::prefix('adminpanel')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
         Route::get('/history_tryout', [AdminController::class, 'historyTryout'])->name('admin.history_tryout');
+        Route::get('/history_soal_latihan', [AdminController::class, 'historySoalLatihan'])->name('admin.history_latihan_soal');
         Route::get('/kelola_materi', [AdminController::class, 'kelolaMateri'])->name('admin.kelola_materi');
         Route::get('/kelola_soal_tryout', [AdminController::class, 'kelolaSoalTryout'])->name('admin.kelola_soal_tryout');
         Route::get('/kelola_feedback', [AdminController::class, 'kelolaFeedback'])->name('admin.kelola_feedback');
@@ -57,4 +70,3 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 });
 Route::post('/soal-tryout', [AdminController::class, 'store']);
 Route::post('/materi', [AdminController::class, 'materi']);
-Route::get('/materi/{id}', [UserController::class, 'show'])->name('user.materi.show');

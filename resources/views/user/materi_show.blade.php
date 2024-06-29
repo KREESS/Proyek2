@@ -68,7 +68,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <a href="{{ route('user.soal_latihan', ['materi_id' => $materi->id]) }}" class="btn btn-dark" id="btn-mulai-latihan">Mulai Latihan</a>
+                <a href="{{ route('user.soal_latihan', ['id' => $materi->id]) }}" class="btn btn-dark" id="btn-mulai-latihan">Mulai Latihan</a>
             </div>
         </div>
     </div>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Latihan Soal - Pembelajaran dan Tryout Terbaik</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Link Icon-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Local css -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+@include('layouts.navbar_admin')
+
+<br><br>
+<div class="container mt-5">
+    <h1 class="text-center mb-4 text-black font-weight-bold">History Soal Latihan</h1>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover shadow">
+            <thead class="thead-dark">
+                <tr>
+                    <th>No</th>
+                    <th>User</th>
+                    <th>Benar dari 5</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($userAnswers as $userAnswer)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $userAnswer->user->name }}</td>
+                    <td>{{ $userAnswer->correctCount }} / 5</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+<br><br>
+@include('layouts.footer')
+
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+</body>
+</html>

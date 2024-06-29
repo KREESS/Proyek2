@@ -367,3 +367,14 @@ html {
     text-transform: uppercase; /* Mengubah teks menjadi huruf besar */
     text-align: center;
 }
+
+.bg-black {
+    background-color: black; /* Sesuaikan dengan warna yang Anda inginkan untuk kotak nomor soal dengan jawaban terpilih */
+    color: white; /* Sesuaikan warna teks jika perlu */
+}
+
+.bg-yellow {
+    background-color: yellow !important;
+}
+
+

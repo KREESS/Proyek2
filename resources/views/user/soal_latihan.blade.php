@@ -21,34 +21,36 @@
     <h1 class="text-center">Soal Latihan - {{ $materi->judul }}</h1>
     <br><br>
     <form id="latihanForm" method="POST" action="{{ route('user.finish', ['materi_id' => $materi_id]) }}">
-        @csrf
-        @foreach($soalTryouts as $index => $soal)
-            <div class="mb-4">
-                <h5>{{ $index + 1 }}. {!! nl2br(e($soal->question)) !!}</h5>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jawaban[{{ $soal->id }}]" id="jawabanA{{ $soal->id }}" value="A">
-                    <label class="form-check-label" for="jawabanA{{ $soal->id }}">A. {{ $soal->option_a }}</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jawaban[{{ $soal->id }}]" id="jawabanB{{ $soal->id }}" value="B">
-                    <label class="form-check-label" for="jawabanB{{ $soal->id }}">B. {{ $soal->option_b }}</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jawaban[{{ $soal->id }}]" id="jawabanC{{ $soal->id }}" value="C">
-                    <label class="form-check-label" for="jawabanC{{ $soal->id }}">C. {{ $soal->option_c }}</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jawaban[{{ $soal->id }}]" id="jawabanD{{ $soal->id }}" value="D">
-                    <label class="form-check-label" for="jawabanD{{ $soal->id }}">D. {{ $soal->option_d }}</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jawaban[{{ $soal->id }}]" id="jawabanE{{ $soal->id }}" value="E">
-                    <label class="form-check-label" for="jawabanE{{ $soal->id }}">E. {{ $soal->option_e }}</label>
-                </div>
+    @csrf
+    @foreach($soalTryouts as $index => $soal)
+        <div class="mb-4">
+            <h5>{{ $index + 1 }}. {!! nl2br(e($soal->question)) !!}</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="jawaban[{{ $index + 1 }}][jawaban]" id="jawaban{{ $index + 1 }}A" value="A">
+                <label class="form-check-label" for="jawaban{{ $index + 1 }}A">A. {{ $soal->option_a }}</label>
+                <input type="hidden" name="jawaban[{{ $index + 1 }}][soal_tryout_id]" value="{{ $soal->id }}">
             </div>
-        @endforeach
-        <button type="button" class="btn btn-dark materi-card-btn mt-auto" data-bs-toggle="modal" data-bs-target="#confirmationModal" onclick="return confirmSubmit();">Kirim Jawaban</button>
-    </form>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="jawaban[{{ $index + 1 }}][jawaban]" id="jawaban{{ $index + 1 }}B" value="B">
+                <label class="form-check-label" for="jawaban{{ $index + 1 }}B">B. {{ $soal->option_b }}</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="jawaban[{{ $index + 1 }}][jawaban]" id="jawaban{{ $index + 1 }}C" value="C">
+                <label class="form-check-label" for="jawaban{{ $index + 1 }}C">C. {{ $soal->option_c }}</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="jawaban[{{ $index + 1 }}][jawaban]" id="jawaban{{ $index + 1 }}D" value="D">
+                <label class="form-check-label" for="jawaban{{ $index + 1 }}D">D. {{ $soal->option_d }}</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="jawaban[{{ $index + 1 }}][jawaban]" id="jawaban{{ $index + 1 }}E" value="E">
+                <label class="form-check-label" for="jawaban{{ $index + 1 }}E">E. {{ $soal->option_e }}</label>
+            </div>
+        </div>
+    @endforeach
+    <button type="submit" class="btn btn-dark materi-card-btn mt-auto">Kirim Jawaban</button>
+</form>
+
 </div>
 
 
@@ -63,30 +65,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Modal untuk konfirmasi pengiriman -->
-    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Pengiriman Jawaban</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Apakah Anda yakin ingin mengirim jawaban ini? Periksa kembali jawaban Anda sebelum mengirim.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-dark" onclick="submitForm()">Ya, Kirim Jawaban</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 <!-- Script untuk mengatur waktu dan menyimpan pilihan -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     var timerInterval; // Variabel global untuk menyimpan interval timer
-    var timeLimit = 10 * 60 * 1000; // Waktu dalam milidetik untuk 1 menit
+    var timeLimit = 10 * 60 * 1000; // Waktu dalam milidetik untuk 10 menit
     var alertShown = false; // Variabel untuk melacak apakah alert sudah ditampilkan
 
     // Fungsi untuk memuat waktu dari localStorage atau memulai baru
@@ -174,6 +157,7 @@
         startTime = new Date().getTime();
         remainingTime = timeLimit;
         alertShown = false; // Reset status alert
+        saveTime(); // Simpan ulang waktu setelah direset
     }
 
     // Mulai timer dan memulihkan pilihan saat halaman dimuat
@@ -197,13 +181,6 @@
     window.onbeforeunload = function() {
         clearInterval(timerInterval);
     };
-
-    // Fungsi untuk submit form
-    function submitForm() {
-        clearInterval(timerInterval); // Hentikan timer
-        localStorage.clear(); // Bersihkan localStorage
-        document.getElementById('latihanForm').submit();
-    }
 </script>
 
 

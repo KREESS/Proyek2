@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserAnswer;
 use App\Models\SoalTryout;
 use App\Models\Materi;
 use App\Models\Feedback;
@@ -222,5 +223,32 @@ class AdminController extends Controller
         $feedback->delete();
 
         return redirect()->back()->with('success', 'Feedback berhasil dihapus');
+    }
+
+    public function historySoalLatihan()
+    {
+        $userAnswers = UserAnswer::with(['user', 'soalTryout1', 'soalTryout2', 'soalTryout3', 'soalTryout4', 'soalTryout5'])->get();
+
+        foreach ($userAnswers as $userAnswer) {
+            $correctCount = 0;
+            if ($userAnswer->soalTryout1 && $userAnswer->jawaban1 === $userAnswer->soalTryout1->correct_answer) {
+                $correctCount++;
+            }
+            if ($userAnswer->soalTryout2 && $userAnswer->jawaban2 === $userAnswer->soalTryout2->correct_answer) {
+                $correctCount++;
+            }
+            if ($userAnswer->soalTryout3 && $userAnswer->jawaban3 === $userAnswer->soalTryout3->correct_answer) {
+                $correctCount++;
+            }
+            if ($userAnswer->soalTryout4 && $userAnswer->jawaban4 === $userAnswer->soalTryout4->correct_answer) {
+                $correctCount++;
+            }
+            if ($userAnswer->soalTryout5 && $userAnswer->jawaban5 === $userAnswer->soalTryout5->correct_answer) {
+                $correctCount++;
+            }
+            $userAnswer->correctCount = $correctCount;
+        }
+
+        return view('admin.history_latihan_soal', compact('userAnswers'));
     }
 }

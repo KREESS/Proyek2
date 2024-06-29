@@ -18,6 +18,9 @@
                         <a class="nav-link" href="{{ route('admin.history_tryout') }}">History Tryout</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.history_latihan_soal') }}">History Latihan Soal</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.kelola_materi') }}">Kelola Materi</a>
                     </li>
                     <li class="nav-item">

@@ -45,4 +45,12 @@ class SoalTryout extends Model
         'answer_explanation',
         'materi_id',
     ];
+
+    /**
+     * Get the user answers for the soal tryout.
+     */
+    public function userAnswers()
+    {
+        return $this->hasMany(UserAnswer::class);
+    }
 }

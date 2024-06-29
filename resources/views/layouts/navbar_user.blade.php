@@ -24,6 +24,9 @@
                         <a class="nav-link" href="{{ route('user.history_tryout') }}">History Tryout</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.history_soal_latihan') }}">History Soal Latihan</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('user.feedback') }}">FeedBack</a>
                     </li>
                 </ul>
