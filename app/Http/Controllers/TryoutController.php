@@ -150,24 +150,6 @@ class TryoutController extends Controller
         return view('user.tryout_show', compact('soal_all'));
     }
 
-    public function end()
-    {
-        // Gunakan session key yang unik untuk setiap pengguna dan materi
-        $sessionKey = 'soal_tryouts_' . Auth::id();
-        $firstAccessKey = 'first_access12_' . Auth::id();
-        
-
-        // Membersihkan session jika sudah ada
-        Session::forget($sessionKey);
-        // Tandai bahwa pengguna telah mengakses soal pertama kali
-        Session::put($firstAccessKey, true);
-
-        // Membersihkan cache jika sudah ada
-        Cache::forget($sessionKey);
-
-        return redirect()->route('tryout.start')->withInput(); // Redirect ke halaman awal ujian
-    }
-
     public function start2()
     {
         // Gunakan session key yang unik untuk setiap pengguna
@@ -566,5 +548,24 @@ class TryoutController extends Controller
     
         // Tampilkan view dengan soal yang sudah diambil
         return view('user.tryout_show8', compact('soal_all8'));
+    }
+
+
+    public function end()
+    {
+        // Gunakan session key yang unik untuk setiap pengguna dan materi
+        $sessionKey = 'soal_tryouts_' . Auth::id();
+        $firstAccessKey = 'first_access_' . Auth::id();
+        
+
+        // Membersihkan session jika sudah ada
+        Session::forget($sessionKey);
+        // Tandai bahwa pengguna telah mengakses soal pertama kali
+        Session::put($firstAccessKey, true);
+
+        // Membersihkan cache jika sudah ada
+        Cache::forget($sessionKey);
+
+        return redirect()->route('user.tryout')->withInput(); // Redirect ke halaman awal ujian
     }
 }

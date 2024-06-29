@@ -201,7 +201,7 @@
                 localStorage.clear();
                 alert('Tes selesai, dan lanjut tes berikutnya.');
                 // Mengarahkan ke halaman selanjutnya
-                window.location.href = "{{ route('user.tryout') }}";
+                window.location.href = "{{ route('tryout.end') }}";
             }
         });
 
